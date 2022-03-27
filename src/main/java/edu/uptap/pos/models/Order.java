@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -43,20 +45,17 @@ public class Order implements Serializable {
     @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
 
-    @Column(name = "total_amount",nullable = false)
+    @Column(name = "total_amount", nullable = false)
     private double totalAmount;
 
-    @Column(name = "amount_tendered",nullable = false)
+    @Column(name = "amount_tendered", nullable = false)
     private double amountTendered;
 
     @Column(name = "order_date", nullable = false)
     private Date orderDate;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
     private Set<OrderLine> orderLines;
 
-    public void addOrderLine(OrderLine orderLine) {
-        orderLines.add(orderLine);
-    }
 }

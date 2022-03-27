@@ -36,12 +36,8 @@ public class PurchaseOrder implements Serializable {
     @Column(nullable = false)
     private Date orderDate;
 
-    @OneToMany(mappedBy = "purchaseOrder")
+    @OneToMany(mappedBy = "purchaseOrder", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
     private Set<PurchaseOrderLine> orderLines;
-
-    public void addOrderLine(PurchaseOrderLine orderLine) {
-        orderLines.add(orderLine);
-    }
 
 }
