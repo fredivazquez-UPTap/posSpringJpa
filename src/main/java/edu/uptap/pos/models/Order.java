@@ -55,4 +55,8 @@ public class Order implements Serializable {
     @OneToMany(mappedBy = "order")
     @ToString.Exclude
     private Set<OrderLine> orderLines;
+
+    public void addOrderLine(OrderLine orderLine) {
+        orderLines.add(orderLine);
+    }
 }

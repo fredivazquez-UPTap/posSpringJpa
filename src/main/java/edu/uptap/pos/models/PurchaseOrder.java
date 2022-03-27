@@ -40,4 +40,8 @@ public class PurchaseOrder implements Serializable {
     @ToString.Exclude
     private Set<PurchaseOrderLine> orderLines;
 
+    public void addOrderLine(PurchaseOrderLine orderLine) {
+        orderLines.add(orderLine);
+    }
+
 }
