@@ -25,7 +25,7 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "product_id", nullable = false)
+    @Column(name = "product_id")
     private Long productId;
 
     @Column(name = "product_code", nullable = false, unique = true)
@@ -40,14 +40,28 @@ public class Product implements Serializable {
     @Column(name = "price_sell")
     private Double priceSell;
 
-    @Column(name = "price_bull")
+    @Column(name = "price_buy")
     private Double priceBuy;
 
     @Column(name = "units_in_stock", nullable = false)
     private int unitsInStock;
 
     @ManyToOne
+    @JoinColumn(name = "product_brand_id")
+    private ProductBrand productBrand;
+
+    @ManyToOne
     @JoinColumn(name = "product_category_id")
     private ProductCategory productCategory;
 
+    public Product(String productCode, String productName, String productDescription, Double priceSell, Double priceBuy, int unitsInStock, ProductBrand productBrand, ProductCategory productCategory) {
+        this.productCode = productCode;
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.priceSell = priceSell;
+        this.priceBuy = priceBuy;
+        this.unitsInStock = unitsInStock;
+        this.productBrand = productBrand;
+        this.productCategory = productCategory;
+    }
 }

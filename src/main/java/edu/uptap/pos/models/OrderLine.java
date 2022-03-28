@@ -24,7 +24,7 @@ import java.io.Serializable;
 public class OrderLine implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "order_line_id", nullable = false)
+    @Column(name = "order_line_id")
     private Long orderLineId;
 
     @ManyToOne

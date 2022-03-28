@@ -11,32 +11,28 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.validation.constraints.Email;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "brands")
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Customer implements Serializable {
-
+public class ProductBrand implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "customer_id")
-    private Long customerId;
+    @Column(name = "product_brand_id")
+    private Long productBrandId;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "brand_name", nullable = false)
+    private String brandName;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "status", nullable = false)
+    private boolean status;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Email
-    @Column(name = "email")
-    private String email;
+    public ProductBrand(String brandName, boolean status) {
+        this.brandName = brandName;
+        this.status = status;
+    }
 }

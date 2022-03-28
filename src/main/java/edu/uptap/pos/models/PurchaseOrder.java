@@ -19,7 +19,7 @@ import java.util.Set;
 public class PurchaseOrder implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "purchase_order_id", nullable = false)
+    @Column(name = "purchase_order_id")
     private Long purchaseOrderId;
 
     @ManyToOne

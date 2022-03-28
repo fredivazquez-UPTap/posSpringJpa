@@ -23,7 +23,7 @@ public class PaymentMethod implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "payment_method_id", nullable = false)
+    @Column(name = "payment_method_id")
     private Long paymentMethodId;
 
     @Column(name = "payment_name", nullable = false)

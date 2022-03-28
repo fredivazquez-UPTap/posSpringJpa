@@ -24,7 +24,7 @@ public class Supplier implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "supplier_id", nullable = false)
+    @Column(name = "supplier_id")
     private Long supplierId;
 
     @Column(name = "name", nullable = false)

@@ -22,7 +22,7 @@ import java.io.Serializable;
 public class ProductCategory implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "product_category_id", nullable = false)
+    @Column(name = "product_category_id")
     private Long productCategoryId;
 
     @Column(name = "category_name", nullable = false, unique = true)
@@ -30,4 +30,9 @@ public class ProductCategory implements Serializable {
 
     @Column(name = "status", nullable = false)
     private boolean status;
+
+    public ProductCategory(String categoryName, boolean status) {
+        this.categoryName = categoryName;
+        this.status = status;
+    }
 }
