@@ -1,9 +1,6 @@
 package edu.uptap.pos.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
@@ -20,11 +17,12 @@ import java.util.Date;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
     @Column(name = "username")

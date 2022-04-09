@@ -1,18 +1,8 @@
 package edu.uptap.pos.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -21,11 +11,12 @@ import java.io.Serializable;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "product_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id", nullable = false)
     private Long productId;
 
     @Column(name = "product_code", nullable = false, unique = true)
@@ -45,6 +36,10 @@ public class Product implements Serializable {
 
     @Column(name = "units_in_stock", nullable = false)
     private int unitsInStock;
+
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @ManyToOne
     @JoinColumn(name = "product_brand_id")

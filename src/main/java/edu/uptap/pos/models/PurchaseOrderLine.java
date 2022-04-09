@@ -1,9 +1,6 @@
 package edu.uptap.pos.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
@@ -21,10 +18,11 @@ import java.io.Serializable;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class PurchaseOrderLine implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "purchase_order_line_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "purchase_order_line_id", nullable = false)
     private Long purchaseOrderLineId;
 
     @ManyToOne

@@ -1,9 +1,6 @@
 package edu.uptap.pos.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
@@ -19,11 +16,12 @@ import java.io.Serializable;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class PaymentMethod implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "payment_method_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_method_id", nullable = false)
     private Long paymentMethodId;
 
     @Column(name = "payment_name", nullable = false)

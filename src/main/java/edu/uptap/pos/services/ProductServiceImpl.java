@@ -26,16 +26,15 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findById(id).map(product -> {
             product.setProductCode(newProduct.getProductCode());
             product.setProductCategory(newProduct.getProductCategory());
+            product.setProductBrand(newProduct.getProductBrand());
             product.setProductName(newProduct.getProductName());
             product.setProductDescription(newProduct.getProductDescription());
             product.setPriceBuy(newProduct.getPriceBuy());
             product.setPriceSell(newProduct.getPriceSell());
             product.setUnitsInStock(newProduct.getUnitsInStock());
+            product.setStatus(newProduct.getStatus());
             return productRepository.save(product);
-        }).orElseGet(() -> {
-            newProduct.setProductId(id);
-            return productRepository.save(newProduct);
-        });
+        }).orElseGet(() -> productRepository.save(newProduct));
     }
 
     @Override
@@ -46,5 +45,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProduct(Long id) {
         return productRepository.findById(id).orElseThrow(() -> new PosException(id));
+    }
+
+    @Override
+    public void deleteProduct(Product product) {
+        productRepository.delete(product);
     }
 }

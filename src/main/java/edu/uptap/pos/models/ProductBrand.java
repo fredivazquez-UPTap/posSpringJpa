@@ -1,9 +1,6 @@
 package edu.uptap.pos.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
@@ -19,10 +16,11 @@ import java.io.Serializable;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class ProductBrand implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "product_brand_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_brand_id", nullable = false)
     private Long productBrandId;
 
     @Column(name = "brand_name", nullable = false)
@@ -35,4 +33,6 @@ public class ProductBrand implements Serializable {
         this.brandName = brandName;
         this.status = status;
     }
+
+
 }
